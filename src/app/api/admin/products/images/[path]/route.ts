@@ -5,7 +5,7 @@ import { AUTH_COOKIE_NAME } from "@/lib/config";
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { path: string } }
+  context: { params: Promise<{ path: string }> }
 ) {
   try {
     const token = request.cookies.get(AUTH_COOKIE_NAME)?.value;
@@ -13,7 +13,8 @@ export async function DELETE(
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const decodedPath = decodeURIComponent(params.path);
+    const { path } = await context.params;
+    const decodedPath = decodeURIComponent(path);
 
     const response = await fetch(
       `${API_BASE_URL}/api/admin/products/images/${encodeURIComponent(decodedPath)}`,

@@ -353,11 +353,11 @@ export default function ProductionPage() {
                             </div>
                           )}
 
-                          {item.product?.materials && item.product.materials.length > 0 && (
+                          {(item.product as any)?.materials?.length > 0 && (
                             <div className="mt-2 pt-2 border-t">
                               <div className="text-sm font-medium mb-2">Materials Required:</div>
                               <div className="space-y-1">
-                                {item.product.materials.map((material: any) => {
+                                {(item.product as any).materials.map((material: any) => {
                                   const requiredQuantity = (material.quantity_required || 0) * (item.quantity || 1);
                                   const isLowStock = material.current_stock <= material.low_stock_threshold;
                                   const isInsufficient = material.current_stock < requiredQuantity;

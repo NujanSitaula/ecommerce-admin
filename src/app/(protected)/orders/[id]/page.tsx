@@ -533,20 +533,20 @@ export default function OrderDetailPage() {
                 <span className="text-muted-foreground">Subtotal</span>
                 <span>{formatCurrency(order.subtotal)}</span>
               </div>
-              {order.discount_amount > 0 && (
+              {(order.discount_amount ?? 0) > 0 && (
                 <div className="flex justify-between text-green-600">
                   <span>Discount</span>
-                  <span>-{formatCurrency(order.discount_amount)}</span>
+                  <span>-{formatCurrency(order.discount_amount ?? 0)}</span>
                 </div>
               )}
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Shipping</span>
                 <span>{formatCurrency(order.shipping_fee)}</span>
               </div>
-              {order.shipping_discount > 0 && (
+              {(order.shipping_discount ?? 0) > 0 && (
                 <div className="flex justify-between text-green-600">
                   <span>Shipping Discount</span>
-                  <span>-{formatCurrency(order.shipping_discount)}</span>
+                  <span>-{formatCurrency(order.shipping_discount ?? 0)}</span>
                 </div>
               )}
               <div className="border-t pt-2 flex justify-between font-bold">

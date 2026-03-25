@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Upload, Trash2, Edit2, Image as ImageIcon, File } from "lucide-react";
+import { Upload, Trash2, Edit2, Image as ImageIcon, File as FileIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -249,7 +249,7 @@ export default function MediaLibraryPage() {
                   </video>
                 ) : (
                   <div className="flex flex-col items-center justify-center p-8 text-muted-foreground">
-                    <File className="h-16 w-16 mb-4" />
+                    <FileIcon className="h-16 w-16 mb-4" />
                     <p className="text-lg font-medium">{previewMedia.name}</p>
                     <p className="text-sm mt-2">
                       {formatFileSize(previewMedia.file_size)}

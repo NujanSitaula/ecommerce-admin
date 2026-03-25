@@ -176,7 +176,8 @@ export default function InventoryDetailPage() {
     );
   }
 
-  const isLowStock = product.quantity <= (product.low_stock_threshold || 5);
+  const isLowStock =
+    (product.quantity ?? 0) <= (product.low_stock_threshold ?? 5);
 
   return (
     <div className="space-y-6">

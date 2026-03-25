@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,11 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <TooltipProvider>
-            {children}
+            <Suspense
+              fallback={<div className="min-h-screen" aria-busy="true" />}
+            >
+              {children}
+            </Suspense>
             <Toaster position="top-right" />
           </TooltipProvider>
         </ThemeProvider>

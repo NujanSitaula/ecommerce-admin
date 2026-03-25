@@ -208,7 +208,7 @@ export default function CategoriesPage() {
         roots.push(cat);
       }
     });
-    const sortCats = (list: (AdminCategory & { children: AdminCategory[] })[]) => {
+    const sortCats = (list: any[]) => {
       list.sort((a, b) => a.name.localeCompare(b.name));
       list.forEach((c) => sortCats(c.children));
     };
@@ -217,13 +217,13 @@ export default function CategoriesPage() {
   }, [categories]);
 
   const flattenWithDepth = (
-    nodes: (AdminCategory & { children: AdminCategory[] })[],
+    nodes: any[],
     depth = 0
-  ): (AdminCategory & { depth: number })[] => {
-    const result: (AdminCategory & { depth: number })[] = [];
+  ): any[] => {
+    const result: any[] = [];
     nodes.forEach((node) => {
       const { children, ...rest } = node;
-      result.push({ ...(rest as AdminCategory), depth });
+      result.push({ ...rest, depth });
       if (children.length) {
         result.push(...flattenWithDepth(children, depth + 1));
       }

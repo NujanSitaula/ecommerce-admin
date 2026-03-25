@@ -5,6 +5,11 @@ import { headers } from "next/headers";
 import { AUTH_COOKIE_NAME, API_BASE_URL, ME_PATH } from "@/lib/config";
 import type { SessionUser } from "@/lib/types";
 
+// Prevent Next.js from prerendering protected routes at build time.
+// Protected layout uses cookies + backend calls and must run at request time.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 async function getCurrentUser(): Promise<SessionUser | null> {
   try {
     // Read cookie from headers (Next.js 16 requires await)

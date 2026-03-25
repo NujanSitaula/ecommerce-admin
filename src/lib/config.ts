@@ -1,7 +1,7 @@
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   process.env.API_BASE_URL ||
-  "http://localhost:8000";
+  "https://api.shufflee.co";
 
 export const AUTH_COOKIE_NAME =
   process.env.AUTH_COOKIE_NAME || "admin_session_token";
